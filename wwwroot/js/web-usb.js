@@ -46,7 +46,7 @@ async function listele() {
     navigator.usb.getDevices().then(function (devices) {
         devices.forEach(device => {
             $("#devices").append(""
-                + "<tr> <td class='p-1'>" + counter++
+                + "<tr> <td class='p-1'>" + ++counter
                 + "</td><td class='p-1'>  " + " <button class='btnSec btn btn-sm btn-info' onclick=SecileneIzinIste(" + device.vendorId + ")> Seç</button>"
                 + "</td><td class='p-1'>  " + device.productName
                 + "</td><td class='p-1'>  " + device.vendorId
