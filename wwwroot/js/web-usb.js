@@ -7,16 +7,6 @@ var currDevices;
 
 function izinIste() {
     navigator.usb.requestDevice({ filters: [] }).then(devices => { currDevices = devices });
-    console.log(currDevices);
-
-    // eğer ürün bilgileri biliniyorsa spesifik olarak izin istenebilir.
-    // örnek: 
-    //filters: [{
-    //    vendorId: 0xABCD,
-    //    classCode: 0xFF, // vendor-specific
-    //    protocolCode: 0x01
-    //}]
-
 }
 
 async function SecileneIzinIste(_vendorId) {
@@ -29,8 +19,8 @@ async function SecileneIzinIste(_vendorId) {
             return device.open(); // Begin a session.
         })
 
-        .then(() => device.selectConfiguration(1)) // Select configuration #1 for the device.
-        .then(() => device.claimInterface(2)) // Request exclusive control over interface #2.
+        .then(() => device.selectConfiguration(1)) // Select configuration #1 for the device. // bakılacak
+        .then(() => device.claimInterface(2)) // Request exclusive control over interface #2. // bakılacak
         .then(() => device.controlTransferOut({
             requestType: 'class',
             recipient: 'interface',
@@ -38,7 +28,7 @@ async function SecileneIzinIste(_vendorId) {
             value: 0x01,
             index: 0x02
         })) // Ready to receive data
-        .then(() => device.transferIn(5, 1)) // Waiting for 64 bytes of data from endpoint #5.
+        .then(() => device.transferIn(5, 64)) // Waiting for 64 bytes of data from endpoint #5. // dinamik veri alınabilir mi?
         .then(result => {
             const decoder = new TextDecoder();
             console.log('Received: ' + decoder.decode(result.data));
