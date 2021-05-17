@@ -1,29 +1,40 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Anasayfa";
 }
 
-<div id="content" allow="usb">
-    <h2>Web USB ornek</h2>
-    <div style="display:inline-block; margin:10px;">
-        <button id="btnOku" onclick="oku()" style="width:200px; text-align:center; display:inline-block;">İzin İste</button>
-        <button id="listele" onclick="listele()" style="width:200px; text-align:center; display:inline-block;">Listele</button>
-        <p id="algilanan" style="width:200px; text-align:center; display:inline-block; color:green">Algılanan Cihaz Sayisi </p>
+<div id="content" class="p-5">
+    <h2>Web USB</h2>
+    <div class="row">
+        <div class="col">
+            <button id="izinIste" class="btn btn-info btn-sm d-inline-block" onclick="izinIste()">Genel İzin İste</button>
+            <button id="listele" class="btn btn-success btn-sm d-inline-block" onclick="listele()">Listele</button>
+            <strong id="algilanan" class="d-inline-block text-success float-right">Algılanan Cihaz Sayisi </strong>
+        </div>
+
+    </div>
+    <div class="table-responsive">
+        <table border="1" class="table  table-striped p-0">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th style="width:55px">İşlem</th>
+                    <th>Cihaz Adı</th>
+                    <th>Vendor Id</th>
+                    <th>Seri No</th>
+                    <th>Üretici</th>
+                    <th>Ürün Id</th>
+                </tr>
+            </thead>
+            <tbody id="devices">
+            </tbody>
+        </table>
     </div>
 
-    <table border="1" style="width:50%">
-        <thead>
-            <tr>
-                <th>Sıra</th>
-                <th>Cihaz Adı</th>
-                <th>Seri No</th>
-                <th>Üretici</th>
-                <th>Ürün Id</th>
-            </tr>
-        </thead>
-        <tbody id="devices">
-        </tbody>
 
-    </table>
+
+    <div id="secilen" style="margin-top:50px;">
+
+    </div>
 
     <script src="/js/web-usb.js" asp-append-version="true"></script>
 </div>
