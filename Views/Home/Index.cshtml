@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="content" allow="usb">
+    <h2>Web USB ornek</h2>
+    <div style="display:inline-block; margin:10px;">
+        <button id="btnOku" onclick="oku()" style="width:200px; text-align:center; display:inline-block;">İzin İste</button>
+        <button id="listele" onclick="listele()" style="width:200px; text-align:center; display:inline-block;">Listele</button>
+        <p id="algilanan" style="width:200px; text-align:center; display:inline-block; color:green">Algılanan Cihaz Sayisi </p>
+    </div>
+
+    <table border="1" style="width:50%">
+        <thead>
+            <tr>
+                <th>Sıra</th>
+                <th>Cihaz Adı</th>
+                <th>Seri No</th>
+                <th>Üretici</th>
+                <th>Ürün Id</th>
+            </tr>
+        </thead>
+        <tbody id="devices">
+        </tbody>
+
+    </table>
+
+    <script src="/js/web-usb.js" asp-append-version="true"></script>
+</div>
+
